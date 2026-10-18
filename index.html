@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b14">
+  <meta name="description" content="Reshad's personal DU Science Unit admission practice platform.">
+  <title>DU Prep Lab — Reshad</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+  <div class="app-shell">
+    <aside class="sidebar glass">
+      <a class="brand" href="#" aria-label="DU Prep Lab home">
+        <span class="brand-mark">DU<span>+</span></span>
+        <span><strong>Prep Lab</strong><small>PERSONAL STUDY SPACE</small></span>
+      </a>
+      <div class="profile-card">
+        <div class="avatar">R</div><div><strong>Reshad</strong><small>DU Science Unit · HSC '26</small></div>
+        <span class="online-dot"></span>
+      </div>
+      <nav class="nav">
+        <button class="nav-link active" data-page="dashboard"><span>◈</span> Dashboard</button>
+        <button class="nav-link" data-page="practice"><span>✦</span> Practice mode</button>
+        <button class="nav-link" data-page="exam"><span>◷</span> Exam mode</button>
+        <button class="nav-link" data-page="results"><span>▥</span> Results & analysis</button>
+        <button class="nav-link" data-page="tutor"><span>✧</span> AI Tutor & Solver</button>
+        <button class="nav-link" data-page="admin"><span>＋</span> Admin · Add MCQs</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="mini-label">YOUR MISSION</div>
+        <p>Small steps. Fewer mistakes. Better scores.</p>
+        <div class="progress-track"><span style="width:65%"></span></div>
+        <div class="progress-caption"><span>Baseline score</span><b>65%</b></div>
+        <div class="sidebar-note">AI Tutor · backend setup required</div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div><div class="eyebrow">YOUR PERSONAL ADMISSION WORKSPACE</div><h1 id="page-title">Dashboard<span class="title-dot">.</span></h1></div>
+        <div class="top-actions"><span class="status-pill"><i></i> Local mode</span><button class="icon-btn" id="theme-help" title="About this version">?</button></div>
+      </header>
+
+      <section class="page active" id="page-dashboard">
+        <div class="welcome-panel glass">
+          <div class="welcome-copy"><div class="eyebrow cyan">YOUR NEXT CHAPTER STARTS HERE</div><h2>Build your DU<br><span>comeback.</span></h2><p>Practice with purpose. Track the mistakes. Turn what you know into marks.</p><button class="btn btn-primary" data-go="practice">Start practicing <span>↗</span></button></div>
+          <div class="welcome-art" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="orb-core">DU<small>SCIENCE</small></div><span class="float-tag tag-a">FOCUS</span><span class="float-tag tag-b">REPEAT</span><span class="float-tag tag-c">IMPROVE</span></div>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card glass"><div class="stat-icon purple">◷</div><span class="stat-label">Practice sessions</span><strong id="stat-sessions">0</strong><small>Completed on this device</small></article>
+          <article class="stat-card glass"><div class="stat-icon cyan-bg">✓</div><span class="stat-label">Average accuracy</span><strong id="stat-accuracy">—</strong><small>Across submitted attempts</small></article>
+          <article class="stat-card glass"><div class="stat-icon orange">↗</div><span class="stat-label">Best score</span><strong id="stat-best">—</strong><small>Net percentage</small></article>
+        </div>
+        <div class="section-heading"><div><div class="eyebrow">PICK UP WHERE YOU LEFT OFF</div><h3>Study by subject</h3></div><span class="subtle-text">75 chapter maps · 44 starter MCQs</span></div>
+        <div class="subject-grid">
+          <button class="subject-card glass" data-subject="Physics"><span class="subject-symbol physics">Φ</span><span><strong>Physics</strong><small>Concepts · Numericals</small></span><span class="card-arrow">↗</span></button>
+          <button class="subject-card glass" data-subject="Chemistry"><span class="subject-symbol chemistry">⚗</span><span><strong>Chemistry</strong><small>Reactions · Concepts</small></span><span class="card-arrow">↗</span></button>
+          <button class="subject-card glass" data-subject="Higher Math"><span class="subject-symbol math">∑</span><span><strong>Higher Math</strong><small>Formulas · Problem solving</small></span><span class="card-arrow">↗</span></button>
+          <button class="subject-card glass" data-subject="Biology"><span class="subject-symbol biology">⌬</span><span><strong>Biology</strong><small>Facts · Understanding</small></span><span class="card-arrow">↗</span></button>
+        </div>
+        <div class="section-heading"><div><div class="eyebrow">YOUR STUDY LOOP</div><h3>Simple, repeatable progress</h3></div></div>
+        <div class="three-steps"><div class="step-card glass"><span>01</span><strong>Attempt</strong><p>Answer before checking hints.</p></div><div class="step-card glass"><span>02</span><strong>Review</strong><p>Find why each mistake happened.</p></div><div class="step-card glass"><span>03</span><strong>Repeat</strong><p>Retry missed questions later.</p></div></div>
+      </section>
+
+      <section class="page" id="page-practice">
+        <div class="page-intro"><div><div class="eyebrow cyan">LEARN WITHOUT THE PRESSURE</div><h2>Practice mode</h2><p>Hints and explanations are available here. Answers are not revealed in Exam mode.</p></div><span class="mode-badge practice-badge">✦ LEARNING MODE</span></div>
+        <div class="control-panel glass">
+          <label>Subject<select id="practice-subject"><option>Physics</option><option>Chemistry</option><option>Higher Math</option><option>Biology</option><option>All subjects</option></select></label>
+          <label>Paper<select id="practice-paper"><option value="All">Both papers</option><option>1st Paper</option><option>2nd Paper</option></select></label>
+          <label>Chapter<select id="practice-chapter"><option value="All">All chapters</option></select></label>
+          <label>Topic<select id="practice-topic"><option value="All">All topics</option></select></label>
+          <label>Difficulty<select id="practice-difficulty"><option value="All">All levels</option><option>Easy</option><option>Medium</option><option>Hard</option></select></label>
+          <label>Question set<select id="practice-order"><option value="mixed">Mixed questions</option><option value="sequential">In bank order</option></select></label>
+          <button class="btn btn-primary" id="load-practice">Load questions</button>
+        </div>
+        <div id="practice-area" class="question-list"></div>
+      </section>
+
+      <section class="page" id="page-exam">
+        <div class="page-intro"><div><div class="eyebrow cyan">NO HINTS. JUST YOU AND THE QUESTIONS.</div><h2>Exam mode</h2><p>Timer, answer marking, review flags and automatic submission.</p></div><span class="mode-badge exam-badge">◷ EXAM CONDITIONS</span></div>
+        <div id="exam-setup" class="setup-card glass">
+          <div class="setup-icon">◷</div><h3>Configure your mock test</h3><p>Choose subject, paper, chapter and time. This starter bank is small, so some chapters may not have questions yet.</p>
+          <div class="setup-fields"><label>Subject<select id="exam-subject"><option>All subjects</option><option>Physics</option><option>Chemistry</option><option>Higher Math</option><option>Biology</option></select></label><label>Paper<select id="exam-paper"><option value="All">Both papers</option><option>1st Paper</option><option>2nd Paper</option></select></label><label>Chapter<select id="exam-chapter"><option value="All">All chapters</option></select></label><label>Topic<select id="exam-topic"><option value="All">All topics</option></select></label><label>Duration<select id="exam-duration"><option value="5">5 minutes · quick test</option><option value="10" selected>10 minutes · focused</option><option value="20">20 minutes</option><option value="30">30 minutes</option></select></label><label>Questions<select id="exam-count"><option value="5">5 questions</option><option value="10" selected>10 questions</option><option value="20">20 questions (if available)</option><option value="all">All available</option></select></label></div>
+          <div class="marking-note"><strong>Demo marking:</strong> +1 correct · −0.25 incorrect · 0 unanswered. You can change this in <code>assets/app.js</code>.</div>
+          <button class="btn btn-primary btn-wide" id="start-exam">Start exam <span>→</span></button>
+        </div>
+        <div id="exam-area" class="exam-layout hidden">
+          <div class="exam-main glass"><div class="exam-top"><span class="mode-badge exam-badge">EXAM IN PROGRESS</span><div class="timer" id="timer">10:00</div></div><div class="exam-progress"><span id="exam-progress-bar"></span></div><div class="question-meta"><span id="exam-q-count">Question 1</span><span id="exam-subject-label">Physics</span></div><h3 id="exam-question-text">Question text</h3><div id="exam-options" class="options"></div><div class="exam-bottom"><button class="btn btn-ghost" id="prev-question">← Previous</button><button class="btn btn-ghost" id="mark-review">☆ Mark for review</button><button class="btn btn-primary" id="next-question">Next →</button></div></div>
+          <aside class="question-nav glass"><h4>Question palette</h4><p>Tap a number to navigate.</p><div id="question-palette" class="palette"></div><div class="palette-legend"><span><i class="legend-answered"></i> Answered</span><span><i class="legend-review"></i> Review</span></div><button class="btn btn-danger btn-wide" id="submit-exam">Submit exam</button></aside>
+        </div>
+        <div id="exam-confirm" class="confirm-card glass hidden"><h3>Submit your exam?</h3><p id="submit-summary">Review your unanswered questions before submitting.</p><div class="inline-actions"><button class="btn btn-ghost" id="cancel-submit">Go back</button><button class="btn btn-danger" id="confirm-submit">Submit now</button></div></div>
+      </section>
+
+      <section class="page" id="page-results">
+        <div class="page-intro"><div><div class="eyebrow cyan">EVERY MISTAKE IS USEFUL DATA</div><h2>Results & analysis</h2><p>Your attempts are stored in this browser on this device.</p></div><button class="btn btn-ghost" id="clear-results">Clear history</button></div>
+        <div id="latest-result" class="result-empty glass"><div class="empty-icon">▥</div><h3>No submitted exams yet</h3><p>Take an exam to see your score, accuracy and topic-level breakdown here.</p><button class="btn btn-primary" data-go="exam">Set up an exam</button></div>
+        <div id="result-content" class="hidden">
+          <div class="result-hero glass"><div><div class="eyebrow">LATEST ATTEMPT</div><h2 id="result-title">Mock test</h2><p id="result-date" class="subtle-text"></p></div><div class="score-ring" id="score-ring"><div><strong id="result-score">0%</strong><small>NET SCORE</small></div></div></div>
+          <div class="stats-grid result-stats"><article class="stat-card glass"><span class="stat-label">Correct</span><strong id="result-correct">0</strong></article><article class="stat-card glass"><span class="stat-label">Incorrect</span><strong id="result-wrong">0</strong></article><article class="stat-card glass"><span class="stat-label">Unanswered</span><strong id="result-skipped">0</strong></article><article class="stat-card glass"><span class="stat-label">Accuracy</span><strong id="result-accuracy">0%</strong></article></div>
+          <div class="analysis-grid"><div class="glass analysis-card"><div class="section-heading"><div><div class="eyebrow">BY CHAPTER</div><h3>Where to focus</h3></div></div><div id="subject-breakdown"></div></div><div class="glass analysis-card"><div class="section-heading"><div><div class="eyebrow">REVIEW</div><h3>Question breakdown</h3></div></div><div id="answer-review"></div></div></div>
+          <div class="glass history-card"><div class="section-heading"><div><div class="eyebrow">PAST ATTEMPTS</div><h3>Progress history</h3></div></div><div id="history-list"></div></div>
+        </div>
+      </section>
+      <section class="page" id="page-tutor">
+        <div class="page-intro"><div><div class="eyebrow cyan">YOUR PERSONAL STUDY ASSISTANT</div><h2>AI Tutor & Problem Solver</h2><p>Ask in Bangla or English. Get hints, concept explanations, and worked solutions.</p></div><span class="mode-badge practice-badge">✦ STUDY MODE</span></div>
+        <div class="tutor-layout">
+          <section class="tutor-form glass">
+            <div class="tutor-mode-tabs"><label class="tutor-mode-option"><input type="radio" name="tutor-mode" value="tutor" checked><span><b>✧ AI Tutor</b><small>Hints first, learn the concept</small></span></label><label class="tutor-mode-option"><input type="radio" name="tutor-mode" value="solve"><span><b>∑ Problem Solver</b><small>Step-by-step worked solution</small></span></label></div>
+            <div class="tutor-fields"><label>Subject<select id="tutor-subject"><option>Physics</option><option>Chemistry</option><option>Higher Math</option><option>Biology</option><option>General</option></select></label><label>Difficulty<select id="tutor-level"><option>Easy</option><option selected>Medium</option><option>Hard</option></select></label><label>Paper<select id="tutor-paper"><option>1st Paper</option><option>2nd Paper</option><option>Not specified</option></select></label></div>
+            <label class="tutor-question-label" for="tutor-question">Your question</label><textarea id="tutor-question" rows="6" maxlength="6000" placeholder="প্রশ্নটি এখানে লিখে দে…
+উদাহরণ: একটি বস্তু 20 m/s বেগে নিক্ষেপ করা হলো। সর্বোচ্চ উচ্চতা নির্ণয় কর।"></textarea>
+            <label class="upload-label" for="tutor-image">📷 Or attach a question image (optional)<input type="file" id="tutor-image" accept="image/png,image/jpeg,image/webp"></label><p class="tutor-small-note">Use a clear crop of the question. Image size limit: 4 MB. Don't upload personal documents.</p>
+            <div class="tutor-actions"><button class="btn btn-primary" id="ask-ai">Ask AI <span>↗</span></button><button class="btn btn-ghost" id="clear-ai">Clear</button></div>
+            <div class="tutor-privacy"><span>♢</span><span>AI requests send the text/image you submit to the configured AI service. Don't include private personal information. Exam mode remains separate.</span></div>
+          </section>
+          <section class="tutor-answer glass"><div class="answer-heading"><div><div class="eyebrow cyan">STUDY RESPONSE</div><h3 id="ai-response-title">Ready when you are</h3></div><span class="ai-status" id="ai-status">Not connected</span></div><div id="ai-response" class="ai-response"><div class="answer-placeholder"><span>✧</span><strong>Your explanation will appear here</strong><p>AI Tutor gives a hint and checks understanding. Problem Solver shows assumptions, formulas, calculations and a final answer.</p></div></div><div class="ai-footnote" id="ai-footnote">Live AI needs a secure backend URL. Do not place an API key in this website's JavaScript.</div></section>
+        </div>
+      </section>
+
+      <section class="page" id="page-admin">
+        <div class="page-intro"><div><div class="eyebrow cyan">YOUR QUESTION BANK</div><h2>Admin · Add MCQs</h2><p>Add your own admission questions, then export the full bank and replace data/questions.json in your GitHub repository.</p></div><span class="mode-badge practice-badge">＋ QUESTION EDITOR</span></div>
+        <div class="admin-note glass"><strong>How saving works</strong><p>Questions added here are saved only in this browser on this device. To publish them with your website or move them to another device, use “Export full question bank” and upload the downloaded JSON as <code>data/questions.json</code> in GitHub. This static-page editor is not a secure login system.</p></div>
+        <form id="admin-question-form" class="admin-form glass">
+          <div class="admin-form-heading"><div><div class="eyebrow">NEW QUESTION</div><h3>Add an MCQ</h3></div><span id="admin-count" class="admin-count">44 questions loaded</span></div>
+          <div class="admin-fields">
+            <label>Subject<select id="admin-subject" required><option>Physics</option><option>Chemistry</option><option>Higher Math</option><option>Biology</option></select></label>
+            <label>Paper<select id="admin-paper" required><option>1st Paper</option><option>2nd Paper</option></select></label>
+            <label>Chapter<select id="admin-chapter" required></select></label>
+            <label>Topic<input id="admin-topic" required maxlength="120" placeholder="e.g. Newton's laws"></label>
+            <label>Difficulty<select id="admin-difficulty"><option>Easy</option><option selected>Medium</option><option>Hard</option></select></label>
+          </div>
+          <label class="admin-wide-label">Question<textarea id="admin-question" required rows="3" maxlength="3000" placeholder="Write the question in Bangla or English..."></textarea></label>
+          <div class="admin-fields options-fields"><label>Option A<input id="admin-opt0" required maxlength="500"></label><label>Option B<input id="admin-opt1" required maxlength="500"></label><label>Option C<input id="admin-opt2" required maxlength="500"></label><label>Option D<input id="admin-opt3" required maxlength="500"></label></div>
+          <div class="admin-fields"><label>Correct answer<select id="admin-answer"><option value="0">A</option><option value="1">B</option><option value="2">C</option><option value="3">D</option></select></label><label>Hint<input id="admin-hint" maxlength="1000" placeholder="Optional hint"></label></div>
+          <label class="admin-wide-label">Explanation / solution<textarea id="admin-explanation" rows="3" maxlength="3000" required placeholder="Explain why the answer is correct..."></textarea></label>
+          <div class="admin-actions"><button class="btn btn-primary" type="submit">＋ Save question</button><button class="btn btn-ghost" type="button" id="admin-export">Export full question bank (.json)</button><button class="btn btn-ghost" type="button" id="admin-import-trigger">Import question bank</button><input id="admin-import-file" type="file" accept="application/json,.json" hidden></div>
+          <p class="admin-small-note">Before exporting, check the correct answer and explanation. Imported JSON should use the same question format as this project's data/questions.json.</p>
+        </form>
+        <div class="glass admin-list"><div class="section-heading"><div><div class="eyebrow">RECENT ADDITIONS</div><h3>Questions added on this device</h3></div><button class="btn btn-ghost" id="admin-clear-local" type="button">Clear local additions</button></div><div id="admin-recent"></div></div>
+      </section>
+
+      <footer><span>DU PREP LAB <b>•</b> Built for Reshad</span><span>Practice honestly. Review deeply. <span class="footer-heart">♥</span></span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <dialog id="help-dialog" class="help-dialog glass"><button class="dialog-close" id="close-help" aria-label="Close">×</button><div class="eyebrow cyan">ABOUT THIS BUILD</div><h2>Chapter-wise v2.0</h2><p>This is a functional front-end prototype with chapter and topic filters, two-paper chapter catalogue, difficulty levels, timer, MCQ selection, review flags, scoring and local history. The bundled bank is a starter set and should be expanded and cross-checked against the current DU circular.</p><p><strong>AI status:</strong> AI Tutor & Problem Solver interface is included. Configure and deploy the secure backend in the backend/ folder, then set its URL in assets/app.js. Never put the provider API key in this repository.</p><p><strong>Privacy:</strong> attempts are stored in this browser's local storage and are not synced across devices.</p><button class="btn btn-primary btn-wide" id="close-help-bottom">Got it</button></dialog>
+  <script src="assets/app.js"></script>
+</body>
+</html>
