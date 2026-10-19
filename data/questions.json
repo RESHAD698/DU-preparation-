@@ -1,0 +1,882 @@
+[
+  {
+    "id": "phy001",
+    "subject": "Physics",
+    "chapter": "নিউটনীয় বলবিদ্যা",
+    "topic": "Newton's laws",
+    "difficulty": "Easy",
+    "question": "A 2 kg object experiences a net force of 10 N. What is its acceleration?",
+    "options": [
+      "2 m/s²",
+      "5 m/s²",
+      "10 m/s²",
+      "20 m/s²"
+    ],
+    "answer": 1,
+    "hint": "Use Newton's second law: F = ma.",
+    "explanation": "From F = ma, a = F/m = 10/2 = 5 m/s².",
+    "paper": "1st Paper",
+    "chapterId": "phy-1-04",
+    "sourceType": "starter_sample"
+  },
+  {
+    "id": "phy002",
+    "subject": "Physics",
+    "chapter": "কাজ, শক্তি ও ক্ষমতা",
+    "topic": "Kinetic energy",
+    "difficulty": "Easy",
+    "question": "If the speed of an object doubles while its mass stays constant, its kinetic energy becomes…",
+    "options": [
+      "2 times",
+      "3 times",
+      "4 times",
+      "8 times"
+    ],
+    "answer": 2,
+    "hint": "Kinetic energy is proportional to the square of speed.",
+    "explanation": "K = ½mv². Replacing v by 2v gives K′ = ½m(2v)² = 4K.",
+    "paper": "1st Paper",
+    "chapterId": "phy-1-05",
+    "sourceType": "starter_sample"
+  },
+  {
+    "id": "phy003",
+    "subject": "Physics",
+    "chapter": "গতিবিদ্যা",
+    "topic": "Uniform acceleration",
+    "difficulty": "Medium",
+    "question": "A body starts from rest and accelerates uniformly at 3 m/s² for 4 s. How far does it travel?",
+    "options": [
+      "12 m",
+      "18 m",
+      "24 m",
+      "48 m"
+    ],
+    "answer": 2,
+    "hint": "For initial velocity u = 0, use s = ut + ½at².",
+    "explanation": "s = 0 + ½ × 3 × 4² = 24 m.",
+    "paper": "1st Paper",
+    "chapterId": "phy-1-03",
+    "sourceType": "starter_sample"
+  },
+  {
+    "id": "phy004",
+    "subject": "Physics",
+    "chapter": "নিউটনীয় বলবিদ্যা",
+    "topic": "Friction",
+    "difficulty": "Medium",
+    "question": "A 5 kg block rests on a horizontal surface. If μs = 0.4 and g = 10 m/s², the maximum static friction is…",
+    "options": [
+      "2 N",
+      "10 N",
+      "20 N",
+      "50 N"
+    ],
+    "answer": 2,
+    "hint": "Maximum static friction equals μsN; on a horizontal surface N = mg.",
+    "explanation": "N = 5 × 10 = 50 N. fmax = μsN = 0.4 × 50 = 20 N.",
+    "paper": "1st Paper",
+    "chapterId": "phy-1-04",
+    "sourceType": "starter_sample"
+  },
+  {
+    "id": "phy005",
+    "subject": "Physics",
+    "chapter": "কাজ, শক্তি ও ক্ষমতা",
+    "topic": "Work",
+    "difficulty": "Hard",
+    "question": "A constant 10 N force acts at 60° to the displacement of 4 m. How much work does it do?",
+    "options": [
+      "10 J",
+      "20 J",
+      "40 J",
+      "40√3 J"
+    ],
+    "answer": 1,
+    "hint": "Work by a constant force is W = Fs cos θ.",
+    "explanation": "W = 10 × 4 × cos 60° = 40 × 0.5 = 20 J.",
+    "paper": "1st Paper",
+    "chapterId": "phy-1-05",
+    "sourceType": "starter_sample"
+  },
+  {
+    "id": "phy006",
+    "subject": "Physics",
+    "chapter": "নিউটনীয় বলবিদ্যা",
+    "topic": "Conservation of momentum",
+    "difficulty": "Medium",
+    "question": "A 2 kg object moving at 3 m/s collides with a stationary 1 kg object. They stick together. Their common speed is…",
+    "options": [
+      "1 m/s",
+      "2 m/s",
+      "3 m/s",
+      "6 m/s"
+    ],
+    "answer": 1,
+    "hint": "For a perfectly inelastic collision, total momentum is conserved.",
+    "explanation": "Initial momentum = 2×3 + 1×0 = 6 kg·m/s. Combined mass = 3 kg, so v = 6/3 = 2 m/s.",
+    "paper": "1st Paper",
+    "chapterId": "phy-1-04",
+    "sourceType": "starter_sample"
+  },
+  {
+    "id": "phy007",
+    "subject": "Physics",
+    "chapter": "পর্যাবৃত্ত গতি",
+    "topic": "Centripetal acceleration",
+    "difficulty": "Hard",
+    "question": "An object moves in a circle of radius 2 m at a speed of 6 m/s. Its centripetal acceleration is…",
+    "options": [
+      "3 m/s²",
+      "12 m/s²",
+      "18 m/s²",
+      "36 m/s²"
+    ],
+    "answer": 2,
+    "hint": "Centripetal acceleration is a = v²/r.",
+    "explanation": "a = 6²/2 = 36/2 = 18 m/s².",
+    "paper": "1st Paper",
+    "chapterId": "phy-1-08",
+    "sourceType": "starter_sample"
+  },
+  {
+    "id": "phy008",
+    "subject": "Physics",
+    "chapter": "তরঙ্গ",
+    "topic": "Wave speed",
+    "difficulty": "Easy",
+    "question": "A wave has frequency 50 Hz and wavelength 2 m. Its speed is…",
+    "options": [
+      "25 m/s",
+      "50 m/s",
+      "100 m/s",
+      "200 m/s"
+    ],
+    "answer": 2,
+    "hint": "Use v = fλ.",
+    "explanation": "v = 50 × 2 = 100 m/s.",
+    "paper": "1st Paper",
+    "chapterId": "phy-1-09",
+    "sourceType": "starter_sample"
+  },
+  {
+    "id": "che001",
+    "subject": "Chemistry",
+    "chapter": "রাসায়নিক বন্ধন",
+    "topic": "Ionic bonds",
+    "difficulty": "Easy",
+    "question": "Which pair of elements is most likely to form an ionic compound?",
+    "options": [
+      "Carbon and hydrogen",
+      "Sodium and chlorine",
+      "Oxygen and nitrogen",
+      "Chlorine and bromine"
+    ],
+    "answer": 1,
+    "hint": "Ionic bonding commonly involves electron transfer between a metal and a non-metal.",
+    "explanation": "Sodium is a metal and chlorine is a non-metal. Sodium can transfer an electron to chlorine, forming Na⁺ and Cl⁻.",
+    "paper": "1st Paper",
+    "chapterId": "chem-1-04",
+    "sourceType": "starter_sample"
+  },
+  {
+    "id": "che002",
+    "subject": "Chemistry",
+    "chapter": "পরিমাণগত রসায়ন",
+    "topic": "Amount of substance",
+    "difficulty": "Medium",
+    "question": "How many moles are present in 18 g of water? (Molar mass of H₂O = 18 g/mol)",
+    "options": [
+      "0.5 mol",
+      "1 mol",
+      "2 mol",
+      "18 mol"
+    ],
+    "answer": 1,
+    "hint": "Moles = mass ÷ molar mass.",
+    "explanation": "n = 18 g ÷ 18 g/mol = 1 mol.",
+    "paper": "2nd Paper",
+    "chapterId": "chem-2-03",
+    "sourceType": "starter_sample"
+  },
+  {
+    "id": "che003",
+    "subject": "Chemistry",
+    "chapter": "মৌলের পর্যায়বৃত্ত ধর্ম",
+    "topic": "Atomic radius",
+    "difficulty": "Medium",
+    "question": "Across a period from left to right, atomic radius generally…",
+    "options": [
+      "Increases",
+      "Decreases",
+      "Stays constant",
+      "First becomes zero"
+    ],
+    "answer": 1,
+    "hint": "Across a period, effective nuclear charge generally increases.",
+    "explanation": "Electrons are added to the same main shell while nuclear charge increases, so the attraction on electrons generally increases and atomic radius decreases.",
+    "paper": "1st Paper",
+    "chapterId": "chem-1-03",
+    "sourceType": "starter_sample"
+  },
+  {
+    "id": "che004",
+    "subject": "Chemistry",
+    "chapter": "পরিবেশ রসায়ন",
+    "topic": "pH",
+    "difficulty": "Easy",
+    "question": "At 25°C, an aqueous solution with pH 3 has a hydrogen-ion concentration of…",
+    "options": [
+      "10⁻³ mol/L",
+      "10³ mol/L",
+      "3 mol/L",
+      "10⁻¹¹ mol/L"
+    ],
+    "answer": 0,
+    "hint": "pH = −log₁₀[H⁺].",
+    "explanation": "[H⁺] = 10⁻pH = 10⁻³ mol/L.",
+    "paper": "2nd Paper",
+    "chapterId": "chem-2-01",
+    "sourceType": "starter_sample"
+  },
+  {
+    "id": "math001",
+    "subject": "Higher Math",
+    "chapter": "অন্তরীকরণ",
+    "topic": "Power rule",
+    "difficulty": "Easy",
+    "question": "If y = x³, then dy/dx is…",
+    "options": [
+      "x²",
+      "2x",
+      "3x²",
+      "3x"
+    ],
+    "answer": 2,
+    "hint": "Use d(xⁿ)/dx = nxⁿ⁻¹.",
+    "explanation": "By the power rule, d(x³)/dx = 3x².",
+    "paper": "1st Paper",
+    "chapterId": "math-1-09",
+    "sourceType": "starter_sample"
+  },
+  {
+    "id": "math002",
+    "subject": "Higher Math",
+    "chapter": "যোগজীকরণ",
+    "topic": "Indefinite integrals",
+    "difficulty": "Medium",
+    "question": "Evaluate ∫ 2x dx.",
+    "options": [
+      "2x² + C",
+      "x² + C",
+      "x + C",
+      "2 + C"
+    ],
+    "answer": 1,
+    "hint": "Reverse the power rule and remember the constant of integration.",
+    "explanation": "∫2x dx = 2 × x²/2 + C = x² + C.",
+    "paper": "1st Paper",
+    "chapterId": "math-1-10",
+    "sourceType": "starter_sample"
+  },
+  {
+    "id": "math003",
+    "subject": "Higher Math",
+    "chapter": "ত্রিকোণমিতিক অনুপাত",
+    "topic": "Trigonometric identities",
+    "difficulty": "Easy",
+    "question": "For every angle θ where the expressions are defined, sin²θ + cos²θ equals…",
+    "options": [
+      "0",
+      "1",
+      "tan θ",
+      "2"
+    ],
+    "answer": 1,
+    "hint": "Recall the fundamental Pythagorean trigonometric identity.",
+    "explanation": "The identity is sin²θ + cos²θ = 1.",
+    "paper": "1st Paper",
+    "chapterId": "math-1-06",
+    "sourceType": "starter_sample"
+  },
+  {
+    "id": "math004",
+    "subject": "Higher Math",
+    "chapter": "বহুপদী ও বহুপদী সমীকরণ",
+    "topic": "Discriminant",
+    "difficulty": "Hard",
+    "question": "For x² − 4x + k = 0 to have equal real roots, k must be…",
+    "options": [
+      "2",
+      "4",
+      "−4",
+      "8"
+    ],
+    "answer": 1,
+    "hint": "Equal real roots require discriminant b² − 4ac = 0.",
+    "explanation": "D = (−4)² − 4(1)(k) = 16 − 4k. Set D = 0, giving k = 4.",
+    "paper": "2nd Paper",
+    "chapterId": "math-2-04",
+    "sourceType": "starter_sample"
+  },
+  {
+    "id": "bio001",
+    "subject": "Biology",
+    "chapter": "কোষ ও এর গঠন",
+    "topic": "Cell organelles",
+    "difficulty": "Easy",
+    "question": "Which organelle is the main site of aerobic ATP production in eukaryotic cells?",
+    "options": [
+      "Golgi apparatus",
+      "Mitochondrion",
+      "Lysosome",
+      "Ribosome"
+    ],
+    "answer": 1,
+    "hint": "Think of the organelle associated with cellular respiration.",
+    "explanation": "Mitochondria are the principal site of aerobic respiration and oxidative phosphorylation in eukaryotic cells.",
+    "paper": "1st Paper",
+    "chapterId": "bio-1-01",
+    "sourceType": "starter_sample"
+  },
+  {
+    "id": "bio002",
+    "subject": "Biology",
+    "chapter": "জিনতত্ত্ব ও বিবর্তন",
+    "topic": "DNA",
+    "difficulty": "Easy",
+    "question": "Which nitrogenous base is present in DNA but normally absent from RNA?",
+    "options": [
+      "Uracil",
+      "Thymine",
+      "Adenine",
+      "Guanine"
+    ],
+    "answer": 1,
+    "hint": "RNA typically uses uracil in place of one DNA base.",
+    "explanation": "DNA normally contains thymine, while RNA uses uracil instead.",
+    "paper": "2nd Paper",
+    "chapterId": "bio-2-11",
+    "sourceType": "starter_sample"
+  },
+  {
+    "id": "bio003",
+    "subject": "Biology",
+    "chapter": "রক্ত ও সঞ্চালন",
+    "topic": "Blood circulation",
+    "difficulty": "Medium",
+    "question": "Which chamber of the human heart pumps oxygenated blood into the aorta?",
+    "options": [
+      "Right atrium",
+      "Right ventricle",
+      "Left atrium",
+      "Left ventricle"
+    ],
+    "answer": 3,
+    "hint": "Follow oxygenated blood from the lungs through the left side of the heart.",
+    "explanation": "The left ventricle pumps oxygenated blood through the aortic valve into the aorta.",
+    "paper": "2nd Paper",
+    "chapterId": "bio-2-04",
+    "sourceType": "starter_sample"
+  },
+  {
+    "id": "bio004",
+    "subject": "Biology",
+    "chapter": "কোষ ও এর গঠন",
+    "topic": "Enzymes",
+    "difficulty": "Medium",
+    "question": "An enzyme speeds up a reaction primarily by…",
+    "options": [
+      "Increasing the reaction's ΔG",
+      "Being consumed permanently",
+      "Lowering activation energy",
+      "Changing the equilibrium constant"
+    ],
+    "answer": 2,
+    "hint": "Enzymes provide an alternative reaction pathway.",
+    "explanation": "Enzymes lower activation energy. They do not change the reaction's overall ΔG or equilibrium constant.",
+    "paper": "1st Paper",
+    "chapterId": "bio-1-01",
+    "sourceType": "starter_sample"
+  },
+  {
+    "id": "adm001",
+    "subject": "Physics",
+    "paper": "1st Paper",
+    "chapter": "ভেক্টর",
+    "chapterId": "phy-1-02",
+    "topic": "ভেক্টরের উপাংশ",
+    "difficulty": "Easy",
+    "question": "একটি ভেক্টরের মান 10 এবং x-অক্ষের সঙ্গে কোণ 60°। এর x-উপাংশ কত?",
+    "options": [
+      "5",
+      "5√3",
+      "10",
+      "10√3"
+    ],
+    "answer": 0,
+    "hint": "x-উপাংশ = A cos θ.",
+    "explanation": "10 cos 60° = 5.",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm002",
+    "subject": "Physics",
+    "paper": "1st Paper",
+    "chapter": "নিউটনীয় বলবিদ্যা",
+    "chapterId": "phy-1-04",
+    "topic": "ঘর্ষণ",
+    "difficulty": "Medium",
+    "question": "5 kg ব্লককে অনুভূমিক তলে টানলে μ=0.2 এবং g=10 m/s²। গতিশীল ঘর্ষণ বল কত?",
+    "options": [
+      "2 N",
+      "5 N",
+      "10 N",
+      "25 N"
+    ],
+    "answer": 2,
+    "hint": "f = μN এবং N = mg.",
+    "explanation": "f = 0.2×5×10 = 10 N.",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm003",
+    "subject": "Physics",
+    "paper": "1st Paper",
+    "chapter": "পর্যাবৃত্ত গতি",
+    "chapterId": "phy-1-08",
+    "topic": "SHM",
+    "difficulty": "Hard",
+    "question": "একটি সরল ছন্দিত কণার বিস্তার A। x=A/2 অবস্থানে বিভব শক্তি মোট শক্তির কত অংশ?",
+    "options": [
+      "1/4",
+      "1/2",
+      "3/4",
+      "√3/2"
+    ],
+    "answer": 0,
+    "hint": "SHM-এ বিভব শক্তি/মোট শক্তি = x²/A².",
+    "explanation": "(A/2)²/A² = 1/4.",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm004",
+    "subject": "Physics",
+    "paper": "2nd Paper",
+    "chapter": "স্থির তড়িৎ",
+    "chapterId": "phy-2-02",
+    "topic": "ধারক",
+    "difficulty": "Easy",
+    "question": "ধারকের ধারকত্বের SI একক কোনটি?",
+    "options": [
+      "ওহম",
+      "ফ্যারাড",
+      "টেসলা",
+      "ওয়েবার"
+    ],
+    "answer": 1,
+    "hint": "এটি চার্জ ও বিভব পার্থক্যের অনুপাতের একক.",
+    "explanation": "C = Q/V; ধারকত্বের SI একক ফ্যারাড.",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm005",
+    "subject": "Physics",
+    "paper": "2nd Paper",
+    "chapter": "চল তড়িৎ",
+    "chapterId": "phy-2-03",
+    "topic": "রোধ সমবায়",
+    "difficulty": "Medium",
+    "question": "4 Ω ও 6 Ω রোধ সমান্তরালে যুক্ত। তুল্য রোধ কত?",
+    "options": [
+      "2.4 Ω",
+      "5 Ω",
+      "10 Ω",
+      "24 Ω"
+    ],
+    "answer": 0,
+    "hint": "সমান্তরালে 1/R = 1/R₁ + 1/R₂.",
+    "explanation": "R = (4×6)/(4+6)=2.4 Ω.",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm006",
+    "subject": "Physics",
+    "paper": "2nd Paper",
+    "chapter": "পরমাণুর মডেল ও নিউক্লিয়ার পদার্থবিজ্ঞান",
+    "chapterId": "phy-2-09",
+    "topic": "অর্ধায়ু",
+    "difficulty": "Hard",
+    "question": "একটি তেজস্ক্রিয় নমুনার 75% ক্ষয় হতে তিনটি অর্ধায়ু লাগে কি?",
+    "options": [
+      "হ্যাঁ, 3টি",
+      "না, 1টি",
+      "না, 2টি",
+      "না, 4টি"
+    ],
+    "answer": 2,
+    "hint": "অবশিষ্ট ভগ্নাংশ 25% হলে কত অর্ধায়ু পেরিয়েছে?",
+    "explanation": "দুই অর্ধায়ু পরে অবশিষ্ট 1/4 = 25%, তাই 75% ক্ষয়.",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm007",
+    "subject": "Chemistry",
+    "paper": "1st Paper",
+    "chapter": "মৌলের পর্যায়বৃত্ত ধর্ম",
+    "chapterId": "chem-1-03",
+    "topic": "আয়নন শক্তি",
+    "difficulty": "Easy",
+    "question": "একই পর্যায়ে বাম থেকে ডানে সাধারণত প্রথম আয়নন শক্তি কীভাবে পরিবর্তিত হয়?",
+    "options": [
+      "কমে",
+      "বাড়ে",
+      "অপরিবর্তিত থাকে",
+      "শূন্য হয়"
+    ],
+    "answer": 1,
+    "hint": "কার্যকর নিউক্লীয় আধানের প্রবণতা বিবেচনা কর.",
+    "explanation": "সাধারণভাবে কার্যকর নিউক্লীয় আধান বাড়ে বলে আয়নন শক্তি বাড়ে; কিছু ব্যতিক্রম আছে.",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm008",
+    "subject": "Chemistry",
+    "paper": "1st Paper",
+    "chapter": "রাসায়নিক বন্ধন",
+    "chapterId": "chem-1-04",
+    "topic": "হাইব্রিডাইজেশন",
+    "difficulty": "Medium",
+    "question": "CH₄ অণুতে কার্বনের সংকরায়ন কোনটি?",
+    "options": [
+      "sp",
+      "sp²",
+      "sp³",
+      "dsp²"
+    ],
+    "answer": 2,
+    "hint": "চারটি সমতুল্য σ বন্ধন এবং টেট্রাহেড্রাল জ্যামিতি মনে কর.",
+    "explanation": "CH₄-এ কার্বন sp³ সংকরিত; আকৃতি টেট্রাহেড্রাল.",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm009",
+    "subject": "Chemistry",
+    "paper": "1st Paper",
+    "chapter": "গুণগত রসায়ন",
+    "chapterId": "chem-1-02",
+    "topic": "কোয়ান্টাম সংখ্যা",
+    "difficulty": "Hard",
+    "question": "n=3 হলে একটি ইলেকট্রনের জন্য l-এর সম্ভাব্য মান কোন সেট?",
+    "options": [
+      "0,1,2",
+      "1,2,3",
+      "0,1,2,3",
+      "শুধু 3"
+    ],
+    "answer": 0,
+    "hint": "l-এর মান 0 থেকে n−1 পর্যন্ত পূর্ণসংখ্যা.",
+    "explanation": "n=3 হলে l=0,1,2.",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm010",
+    "subject": "Chemistry",
+    "paper": "2nd Paper",
+    "chapter": "পরিমাণগত রসায়ন",
+    "chapterId": "chem-2-03",
+    "topic": "স্টইকিওমেট্রি",
+    "difficulty": "Easy",
+    "question": "0.5 mol O₂-এ অণুর সংখ্যা কত?",
+    "options": [
+      "0.5Nₐ",
+      "Nₐ",
+      "2Nₐ",
+      "Nₐ/2"
+    ],
+    "answer": 3,
+    "hint": "কণার সংখ্যা = মোল × অ্যাভোগাড্রো ধ্রুবক.",
+    "explanation": "N = 0.5Nₐ = Nₐ/2.",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm011",
+    "subject": "Chemistry",
+    "paper": "2nd Paper",
+    "chapter": "তড়িৎ রসায়ন",
+    "chapterId": "chem-2-04",
+    "topic": "জারণ-বিজারণ",
+    "difficulty": "Medium",
+    "question": "একটি বিক্রিয়ায় কোনো পরমাণুর জারণ সংখ্যা +2 থেকে +3 হলে কী ঘটেছে?",
+    "options": [
+      "বিজারণ",
+      "জারণ",
+      "নিরপেক্ষকরণ",
+      "হাইড্রোলাইসিস"
+    ],
+    "answer": 1,
+    "hint": "জারণ সংখ্যার বৃদ্ধি কোন প্রক্রিয়ার লক্ষণ?",
+    "explanation": "জারণ সংখ্যা বৃদ্ধি মানে জারণ.",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm012",
+    "subject": "Chemistry",
+    "paper": "2nd Paper",
+    "chapter": "জৈব রসায়ন",
+    "chapterId": "chem-2-02",
+    "topic": "কার্যকরী মূলক",
+    "difficulty": "Hard",
+    "question": "প্রাথমিক অ্যালকোহলকে নিয়ন্ত্রিত জারণে সাধারণত প্রথমে কোন শ্রেণির যৌগে রূপান্তর করা যায়?",
+    "options": [
+      "কিটোন",
+      "অ্যালডিহাইড",
+      "ইথার",
+      "অ্যালকিন"
+    ],
+    "answer": 1,
+    "hint": "একটি প্রান্তীয় –CH₂OH গ্রুপের মৃদু জারণ ভাবো.",
+    "explanation": "প্রাথমিক অ্যালকোহল নিয়ন্ত্রিত জারণে অ্যালডিহাইড দেয়; অধিক জারণে কার্বক্সিলিক অ্যাসিড হতে পারে.",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm013",
+    "subject": "Higher Math",
+    "paper": "1st Paper",
+    "chapter": "ম্যাট্রিক্স ও নির্ণায়ক",
+    "chapterId": "math-1-01",
+    "topic": "নির্ণায়ক",
+    "difficulty": "Easy",
+    "question": "A = [[2,0],[0,3]] হলে det(A) কত?",
+    "options": [
+      "0",
+      "5",
+      "6",
+      "−6"
+    ],
+    "answer": 2,
+    "hint": "2×2 নির্ণায়ক ad−bc.",
+    "explanation": "det(A)=2×3−0=6.",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm014",
+    "subject": "Higher Math",
+    "paper": "1st Paper",
+    "chapter": "বিন্যাস ও সমাবেশ",
+    "chapterId": "math-1-05",
+    "topic": "সমাবেশ",
+    "difficulty": "Medium",
+    "question": "5 জন থেকে 2 জনের কমিটি কতভাবে গঠন করা যায়?",
+    "options": [
+      "10",
+      "20",
+      "25",
+      "5"
+    ],
+    "answer": 0,
+    "hint": "ক্রম গুরুত্বপূর্ণ নয়, তাই combination.",
+    "explanation": "⁵C₂ = 5×4/(2×1)=10.",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm015",
+    "subject": "Higher Math",
+    "paper": "1st Paper",
+    "chapter": "অন্তরীকরণ",
+    "chapterId": "math-1-09",
+    "topic": "চেইন রুল",
+    "difficulty": "Hard",
+    "question": "y=(3x²+1)⁴ হলে dy/dx কোনটি?",
+    "options": [
+      "4(3x²+1)³",
+      "24x(3x²+1)³",
+      "12x(3x²+1)⁴",
+      "8x(3x²+1)³"
+    ],
+    "answer": 1,
+    "hint": "বাইরের ঘাতের অন্তরজ × ভেতরের অন্তরজ.",
+    "explanation": "dy/dx = 4(3x²+1)³·6x = 24x(3x²+1)³.",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm016",
+    "subject": "Higher Math",
+    "paper": "2nd Paper",
+    "chapter": "জটিল সংখ্যা",
+    "chapterId": "math-2-03",
+    "topic": "মেরু রূপ",
+    "difficulty": "Easy",
+    "question": "i²-এর মান কত?",
+    "options": [
+      "1",
+      "−1",
+      "i",
+      "−i"
+    ],
+    "answer": 1,
+    "hint": "জটিল এককের মৌলিক সম্পর্ক মনে কর.",
+    "explanation": "i² = −1.",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm017",
+    "subject": "Higher Math",
+    "paper": "2nd Paper",
+    "chapter": "কণিক",
+    "chapterId": "math-2-06",
+    "topic": "পরাবৃত্ত",
+    "difficulty": "Medium",
+    "question": "y²=4ax পরাবৃত্তের ফোকাস কোথায়?",
+    "options": [
+      "(a,0)",
+      "(0,a)",
+      "(−a,0)",
+      "(0,−a)"
+    ],
+    "answer": 0,
+    "hint": "প্রমিত রূপ y²=4ax-এর ফোকাস x-অক্ষের উপর.",
+    "explanation": "y²=4ax-এর ফোকাস (a,0).",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm018",
+    "subject": "Higher Math",
+    "paper": "2nd Paper",
+    "chapter": "বিস্তার ও সম্ভাবনা",
+    "chapterId": "math-2-10",
+    "topic": "সম্ভাবনা",
+    "difficulty": "Hard",
+    "question": "একটি সুষম পাশা দুইবার নিক্ষেপে যোগফল 7 হওয়ার সম্ভাবনা কত?",
+    "options": [
+      "1/12",
+      "1/6",
+      "1/3",
+      "7/36"
+    ],
+    "answer": 1,
+    "hint": "মোট 36টি সমসম্ভাব্য ordered outcome; যোগফল 7-এর অনুকূল 6টি.",
+    "explanation": "সম্ভাবনা = 6/36 = 1/6.",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm019",
+    "subject": "Biology",
+    "paper": "1st Paper",
+    "chapter": "কোষ ও এর গঠন",
+    "chapterId": "bio-1-01",
+    "topic": "কোষ অঙ্গাণু",
+    "difficulty": "Easy",
+    "question": "প্রোটিন সংশ্লেষণের প্রধান স্থান কোনটি?",
+    "options": [
+      "লাইসোজোম",
+      "রাইবোজোম",
+      "গলজি বডি",
+      "সেন্ট্রিওল"
+    ],
+    "answer": 1,
+    "hint": "অনুবাদ প্রক্রিয়াটি কোথায় ঘটে?",
+    "explanation": "রাইবোজোমে mRNA অনুবাদের মাধ্যমে প্রোটিন তৈরি হয়.",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm020",
+    "subject": "Biology",
+    "paper": "1st Paper",
+    "chapter": "কোষ বিভাজন",
+    "chapterId": "bio-1-02",
+    "topic": "মিয়োসিস",
+    "difficulty": "Medium",
+    "question": "মিয়োসিস-I-এর কোন পর্যায়ে সমসংস্থ ক্রোমোজোমের মধ্যে crossing over ঘটে?",
+    "options": [
+      "লেপ্টোটিন",
+      "জাইগোটিন",
+      "প্যাকাইটিন",
+      "ডায়াকাইনেসিস"
+    ],
+    "answer": 2,
+    "hint": "প্রোফেজ-I-এর উপপর্যায় মনে কর.",
+    "explanation": "Crossing over ঘটে প্যাকাইটিন পর্যায়ে.",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm021",
+    "subject": "Biology",
+    "paper": "1st Paper",
+    "chapter": "উদ্ভিদ শারীরতত্ত্ব",
+    "chapterId": "bio-1-09",
+    "topic": "সালোকসংশ্লেষণ",
+    "difficulty": "Hard",
+    "question": "Calvin cycle-এর CO₂ গ্রহণকারী প্রাথমিক যৌগ কোনটি?",
+    "options": [
+      "PGA",
+      "RuBP",
+      "PEP",
+      "OAA"
+    ],
+    "answer": 1,
+    "hint": "C₃ চক্রে CO₂ প্রথমে পাঁচ-কার্বন যৌগের সঙ্গে যুক্ত হয়.",
+    "explanation": "RuBP (ribulose-1,5-bisphosphate) CO₂ গ্রহণ করে.",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm022",
+    "subject": "Biology",
+    "paper": "2nd Paper",
+    "chapter": "রক্ত ও সঞ্চালন",
+    "chapterId": "bio-2-04",
+    "topic": "হৃদচক্র",
+    "difficulty": "Easy",
+    "question": "মানব হৃদপিণ্ডে অক্সিজেনসমৃদ্ধ রক্ত প্রথমে ফুসফুস থেকে কোন প্রকোষ্ঠে আসে?",
+    "options": [
+      "ডান অলিন্দ",
+      "ডান নিলয়",
+      "বাম অলিন্দ",
+      "বাম নিলয়"
+    ],
+    "answer": 2,
+    "hint": "ফুসফুসীয় শিরা কোন দিকে রক্ত আনে?",
+    "explanation": "ফুসফুসীয় শিরা অক্সিজেনসমৃদ্ধ রক্ত বাম অলিন্দে আনে.",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm023",
+    "subject": "Biology",
+    "paper": "2nd Paper",
+    "chapter": "প্রতিরক্ষা ও রোগ প্রতিরোধ",
+    "chapterId": "bio-2-10",
+    "topic": "অ্যান্টিবডি",
+    "difficulty": "Medium",
+    "question": "অ্যান্টিবডি নিঃসরণকারী পরিণত B-লিম্ফোসাইটকে কী বলে?",
+    "options": [
+      "প্লাজমা কোষ",
+      "মাস্ট কোষ",
+      "নিউট্রোফিল",
+      "মেমোরি T কোষ"
+    ],
+    "answer": 0,
+    "hint": "B-সেল সক্রিয় হওয়ার পর effector cell-এ রূপান্তরিত হয়.",
+    "explanation": "প্লাজমা কোষ প্রচুর অ্যান্টিবডি নিঃসরণ করে.",
+    "sourceType": "original_starter"
+  },
+  {
+    "id": "adm024",
+    "subject": "Biology",
+    "paper": "2nd Paper",
+    "chapter": "জিনতত্ত্ব ও বিবর্তন",
+    "chapterId": "bio-2-11",
+    "topic": "মেন্ডেলীয় বংশগতি",
+    "difficulty": "Hard",
+    "question": "Aa × Aa সংকরায়ণে সম্পূর্ণ প্রকটতার ক্ষেত্রে ফেনোটাইপিক অনুপাত কত?",
+    "options": [
+      "1:1",
+      "1:2:1",
+      "3:1",
+      "9:3:3:1"
+    ],
+    "answer": 2,
+    "hint": "জিনোটাইপ অনুপাত 1:2:1 থেকে phenotype নির্ণয় কর.",
+    "explanation": "AA ও Aa একই প্রকট phenotype দেয়; তাই 3:1.",
+    "sourceType": "original_starter"
+  }
+]
