@@ -176,6 +176,12 @@ function bindExam() {
 }
 function startExam() {
   const subject = $("#exam-subject").value;
+  const durationMinutes = Number($("#exam-duration").value);
+  if (!Number.isInteger(durationMinutes) || durationMinutes < 1 || durationMinutes > 180) {
+    showToast("Set a whole-number duration from 1 to 180 minutes.");
+    $("#exam-duration").focus();
+    return;
+  }
   let pool = shuffle(filterQuestions(subject,"All",$("#exam-paper").value,$("#exam-chapter").value,$("#exam-topic") ? $("#exam-topic").value : "All"));
   if (!pool.length) { showToast("No questions match these subject/paper/chapter filters yet. Try a broader filter or add more questions."); return; }
   const countVal = $("#exam-count").value;
@@ -185,7 +191,7 @@ function startExam() {
   reviewFlags = new Set();
   currentExamIndex = 0;
   pendingSubmit = false;
-  examEndAt = Date.now() + Number($("#exam-duration").value)*60*1000;
+  examEndAt = Date.now() + durationMinutes*60*1000;
   $("#exam-setup").classList.add("hidden");
   $("#exam-confirm").classList.add("hidden");
   $("#exam-area").classList.remove("hidden");
@@ -297,6 +303,7 @@ function renderResults() {
   if(!latest)return;
   $("#result-title").textContent=`${latest.subject} · ${latest.questionCount} questions`;
   $("#result-date").textContent=new Date(latest.date).toLocaleString();
+  $("#result-marks").textContent=`Net marks: ${Number(latest.netScore ?? latest.rawScore ?? 0).toFixed(2)} / ${latest.maxScore ?? latest.questionCount} · +1 correct, −0.25 wrong, 0 unanswered`;
   $("#result-score").textContent=`${latest.scorePct}%`;
   $("#score-ring").style.setProperty("--score",`${latest.scorePct}%`);
   $("#result-correct").textContent=latest.correct;
@@ -418,16 +425,63 @@ async function importQuestionBank(event) {
   if (!file) return;
   try {
     const parsed = JSON.parse(await file.text());
-    if (!Array.isArray(parsed) || !parsed.every(q=>q && typeof q.question==="string" && Array.isArray(q.options) && q.options.length===4 && Number.isInteger(q.answer) && q.answer>=0 && q.answer<=3 && q.id)) throw new Error("Invalid question bank format");
+    // Accept the app's native array format, {questions:[...]}, or chapter exports
+    // shaped like {subject, chapter, paper, questions:[...]}.
+    const imported = Array.isArray(parsed) ? parsed : (parsed && Array.isArray(parsed.questions) ? parsed.questions : null);
+    if (!imported) throw new Error("JSON must be an array or contain a questions array");
+
+    const normalize = (q, i) => {
+      if (!q || typeof q.question !== "string" || !Array.isArray(q.options) || q.options.length !== 4) throw new Error(`Question ${i + 1} has invalid text/options`);
+      const answerValue = q.answer ?? q.correctAnswer;
+      let answer = answerValue;
+      if (typeof answerValue === "string") {
+        const letter = answerValue.trim().toUpperCase();
+        if (/^[A-D]$/.test(letter)) answer = letter.charCodeAt(0) - 65;
+        else if (/^[0-3]$/.test(letter)) answer = Number(letter);
+      }
+      if (!Number.isInteger(answer) || answer < 0 || answer > 3) throw new Error(`Question ${i + 1} has an invalid correct answer`);
+      const subject = q.subject || parsed.subject || "Physics";
+      const paper = q.paper || parsed.paper || "1st Paper";
+      const chapterName = q.chapter || parsed.chapter || "Uncategorised";
+      let chapter = chapterCatalogue.find(c => c.id === q.chapterId) || chapterCatalogue.find(c => c.subject === subject && c.paper === paper && c.name === chapterName);
+      const chapterId = q.chapterId || (chapter && chapter.id) || `custom-${subject.toLowerCase().replace(/[^a-z0-9]+/g,"-")}-${paper.toLowerCase().replace(/[^a-z0-9]+/g,"-")}-${chapterName.toLowerCase().replace(/[^a-z0-9]+/g,"-")}`;
+      return {
+        id: String(q.id || `import-${Date.now()}-${i}-${Math.random().toString(36).slice(2,7)}`),
+        subject, paper, chapter: chapter ? chapter.name : chapterName, chapterId,
+        topic: String(q.topic || "General"), difficulty: ["Easy","Medium","Hard"].includes(q.difficulty) ? q.difficulty : "Medium",
+        question: q.question.trim(), options: q.options.map(String), answer,
+        hint: String(q.hint || ""), explanation: String(q.explanation || q.solution || "No explanation provided."),
+        sourceType: q.sourceType || "user_imported"
+      };
+    };
+    const normalized = imported.map(normalize);
+    if (!normalized.length) throw new Error("No questions found in the file");
+
     const bundledResponse = await fetch("data/questions.json");
+    if (!bundledResponse.ok) throw new Error("Could not read bundled question bank");
     const bundled = await bundledResponse.json();
-    const bundledIds = new Set(bundled.map(q=>q.id));
-    const local = parsed.filter(q=>!bundledIds.has(q.id));
+    const bundledIds = new Set(bundled.map(q => q.id));
+    let existingLocal = [];
+    try {
+      const saved = JSON.parse(localStorage.getItem(LOCAL_QUESTIONS_KEY) || "[]");
+      if (Array.isArray(saved)) existingLocal = saved;
+    } catch (_) {}
+
+    // Merge chapter files instead of deleting earlier imports. Matching IDs update in place;
+    // bundled starter questions remain authoritative and are not duplicated in local storage.
+    const merged = new Map(existingLocal.filter(q => !bundledIds.has(q.id)).map(q => [q.id, q]));
+    normalized.forEach(q => { if (!bundledIds.has(q.id)) merged.set(q.id, q); });
+    const local = [...merged.values()];
     localStorage.setItem(LOCAL_QUESTIONS_KEY, JSON.stringify(local));
     questionBank = [...bundled, ...local];
+    updateChapterOptions("exam");
+    updateChapterOptions("practice");
     updateDashboard(); loadPractice(); renderAdminRecent();
-    showToast(`Imported ${parsed.length} questions successfully.`);
-  } catch (err) { showToast("Import failed. Use a valid questions.json exported from this website."); }
+    showToast(`Imported ${normalized.length} questions. Local bank now has ${questionBank.length} questions.`);
+  } catch (err) {
+    console.error("Question bank import failed:", err);
+    showToast(`Import failed: ${err.message || "check the JSON format"}.`);
+  }
   event.target.value = "";
 }
 
