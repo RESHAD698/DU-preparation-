@@ -1,0 +1,9 @@
+name = "reshad-du-prep-ai"
+main = "worker.js"
+compatibility_date = "2026-10-18"
+
+# Add secrets in Cloudflare dashboard or with `npx wrangler secret put OPENAI_API_KEY`.
+# Set ALLOWED_ORIGIN to the origin of your GitHub Pages website, e.g. https://yourname.github.io
+[vars]
+ALLOWED_ORIGIN = "https://YOUR-GITHUB-USERNAME.github.io"
+AI_MODEL = "gpt-6-astra"
