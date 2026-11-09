@@ -7,6 +7,12 @@ const AI_API_URL = "";
 let questionBank = [];
 let chapterCatalogue = [];
 let practiceQuestions = [];
+let practicePage = 0;
+const PRACTICE_PAGE_SIZE = 8;
+const EXAM_MAX_QUESTIONS = 300;
+const PALETTE_PAGE_SIZE = 50;
+let topicIndex = new Map();
+let practiceQuestionById = new Map();
 let examQuestions = [];
 let examAnswers = {};
 let reviewFlags = new Set();
@@ -25,7 +31,10 @@ async function init() {
     const bundledQuestions = await res.json();
     let localQuestions = [];
     try { const parsed = JSON.parse(localStorage.getItem(LOCAL_QUESTIONS_KEY) || "[]"); if (Array.isArray(parsed)) localQuestions = parsed; } catch (_) {}
-    questionBank = [...bundledQuestions, ...localQuestions.filter(q => !bundledQuestions.some(base => base.id === q.id))];
+    // O(n) deduplication. The previous nested some() scan became very expensive at 15K+ items.
+    const bundledIds = new Set(bundledQuestions.map(q => q.id));
+    questionBank = bundledQuestions.concat(localQuestions.filter(q => !bundledIds.has(q.id)));
+    buildTopicIndex();
     const chapterRes = await fetch("data/chapters.json");
     if (!chapterRes.ok) throw new Error("Chapter catalogue could not be loaded.");
     const chapterData = await chapterRes.json();
@@ -70,6 +79,14 @@ function shuffle(list) {
   for (let i=a.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
   return a;
 }
+function buildTopicIndex() {
+  topicIndex = new Map();
+  for (const q of questionBank) {
+    const key = `${q.subject}||${q.paper || "All"}`;
+    if (!topicIndex.has(key)) topicIndex.set(key, new Set());
+    if (q.topic) topicIndex.get(key).add(q.topic);
+  }
+}
 function filterQuestions(subject, difficulty="All", paper="All", chapter="All", topic="All") {
   return questionBank.filter(q => (subject === "All subjects" || q.subject === subject) &&
     (paper === "All" || q.paper === paper) &&
@@ -98,7 +115,13 @@ function updateTopicOptions(prefix) {
   } else {
     const subject = $(`#${prefix}-subject`).value;
     const paper = $(`#${prefix}-paper`).value;
-    topics = [...new Set(questionBank.filter(q=>(subject==="All subjects"||q.subject===subject)&&(paper==="All"||q.paper===paper)).map(q=>q.topic))].sort();
+    const subjects = subject === "All subjects" ? ["Physics", "Chemistry", "Biology", "Higher Math"] : [subject];
+    const papers = paper === "All" ? ["1st Paper", "2nd Paper"] : [paper];
+    const found = new Set();
+    for (const sub of subjects) for (const pap of papers) {
+      for (const topic of (topicIndex.get(`${sub}||${pap}`) || [])) found.add(topic);
+    }
+    topics = [...found].sort();
   }
   topicSelect.innerHTML = `<option value="All">All topics</option>` + topics.map(t=>`<option value="${esc(t)}">${esc(t)}</option>`).join("");
   if ([...topicSelect.options].some(o=>o.value===previous)) topicSelect.value=previous;
@@ -128,26 +151,42 @@ function loadPractice() {
   const difficulty = $("#practice-difficulty").value;
   practiceQuestions = filterQuestions(subject,difficulty,$("#practice-paper").value,$("#practice-chapter").value,$("#practice-topic").value);
   if ($("#practice-order").value === "mixed") practiceQuestions = shuffle(practiceQuestions);
+  practicePage = 0;
+  practiceQuestionById = new Map(practiceQuestions.map(q => [String(q.id), q]));
   renderPractice();
 }
 function renderPractice() {
   const root = $("#practice-area");
-  if (!practiceQuestions.length) {
+  const total = practiceQuestions.length;
+  if (!total) {
     root.innerHTML = `<div class="result-empty glass"><h3>No questions in this filter yet</h3><p>Add more questions to data/questions.json or choose another subject/difficulty.</p></div>`;
     return;
   }
-  root.innerHTML = practiceQuestions.map((q,i) => `
-    <article class="practice-question glass" data-qid="${esc(q.id)}">
-      <div class="question-card-top"><div class="question-tags"><span class="tag">${esc(q.subject)}</span><span class="tag">${esc(q.paper || "Paper not tagged")}</span><span class="tag">${esc(q.chapter)}</span><span class="tag">${esc(q.topic)}</span><span class="tag ${q.difficulty.toLowerCase()}">${esc(q.difficulty)}</span></div><span class="question-number">Q${i+1} / ${practiceQuestions.length}</span></div>
+  const pageCount = Math.ceil(total / PRACTICE_PAGE_SIZE);
+  practicePage = Math.max(0, Math.min(practicePage, pageCount - 1));
+  const start = practicePage * PRACTICE_PAGE_SIZE;
+  const visible = practiceQuestions.slice(start, start + PRACTICE_PAGE_SIZE);
+  const cards = visible.map((q, offset) => {
+    const i = start + offset;
+    return `<article class="practice-question glass" data-qid="${esc(q.id)}">
+      <div class="question-card-top"><div class="question-tags"><span class="tag">${esc(q.subject)}</span><span class="tag">${esc(q.paper || "Paper not tagged")}</span><span class="tag">${esc(q.chapter)}</span><span class="tag">${esc(q.topic)}</span><span class="tag ${esc(String(q.difficulty || "medium").toLowerCase())}">${esc(q.difficulty)}</span></div><span class="question-number">Q${i+1} / ${total}</span></div>
       <p class="question-text">${esc(q.question)}</p>
       <div class="options">${q.options.map((o,j)=>`<label class="option"><input type="radio" name="practice-${esc(q.id)}" value="${j}"><span><b>${String.fromCharCode(65+j)}.</b> ${esc(o)}</span></label>`).join("")}</div>
       <div class="practice-actions"><button class="btn btn-ghost" data-action="hint">Show hint</button><button class="btn btn-ghost" data-action="check">Check answer</button><button class="btn btn-ghost" data-action="explain">Explain solution</button></div>
-      <div class="hint-box hidden" data-box="hint"><strong>Hint:</strong> ${esc(q.hint)}</div>
+      <div class="hint-box hidden" data-box="hint"><strong>Hint:</strong> ${esc(q.hint || "No hint available.")}</div>
       <div class="explanation-box hidden" data-box="explain"></div>
-    </article>`).join("");
+    </article>`;
+  }).join("");
+  root.innerHTML = `${cards}<div class="practice-pagination"><button class="btn btn-ghost" data-practice-page="prev" ${practicePage===0?"disabled":""}>← Previous</button><span>Page ${practicePage+1} of ${pageCount} · ${total.toLocaleString()} questions</span><button class="btn btn-ghost" data-practice-page="next" ${practicePage>=pageCount-1?"disabled":""}>Next →</button></div>`;
+  root.querySelectorAll("[data-practice-page]").forEach(btn => btn.addEventListener("click", () => {
+    practicePage += btn.dataset.practicePage === "next" ? 1 : -1;
+    renderPractice();
+    root.scrollIntoView({behavior:"smooth", block:"start"});
+  }));
   root.querySelectorAll("[data-action]").forEach(btn => btn.addEventListener("click", () => {
     const card = btn.closest(".practice-question");
-    const q = practiceQuestions.find(x=>x.id===card.dataset.qid);
+    const q = practiceQuestionById.get(card.dataset.qid);
+    if (!q) return;
     const box = card.querySelector(`[data-box="${btn.dataset.action==="hint"?"hint":"explain"}"]`);
     if (btn.dataset.action==="hint") { box.classList.toggle("hidden"); return; }
     if (btn.dataset.action==="explain") {
@@ -185,7 +224,11 @@ function startExam() {
   let pool = shuffle(filterQuestions(subject,"All",$("#exam-paper").value,$("#exam-chapter").value,$("#exam-topic") ? $("#exam-topic").value : "All"));
   if (!pool.length) { showToast("No questions match these subject/paper/chapter filters yet. Try a broader filter or add more questions."); return; }
   const countVal = $("#exam-count").value;
-  const count = countVal==="all" ? pool.length : Number(countVal);
+  let count = countVal==="all" ? pool.length : Number(countVal);
+  if (countVal === "all" && count > EXAM_MAX_QUESTIONS) {
+    count = EXAM_MAX_QUESTIONS;
+    showToast(`For stability, this sitting is limited to ${EXAM_MAX_QUESTIONS} random questions. You can take another test for the rest.`);
+  }
   examQuestions = pool.slice(0,count);
   examAnswers = {};
   reviewFlags = new Set();
@@ -209,19 +252,39 @@ function updateTimer() {
   if (seconds<=0) finishExam("timeout");
 }
 function renderPalette() {
-  $("#question-palette").innerHTML = examQuestions.map((q,i)=>`<button data-index="${i}" aria-label="Question ${i+1}">${i+1}</button>`).join("");
-  $("#question-palette").querySelectorAll("button").forEach(btn=>btn.addEventListener("click",()=>{
+  const root = $("#question-palette");
+  const total = examQuestions.length;
+  const pageCount = Math.ceil(total / PALETTE_PAGE_SIZE);
+  const page = Math.floor(currentExamIndex / PALETTE_PAGE_SIZE);
+  const start = page * PALETTE_PAGE_SIZE;
+  const end = Math.min(total, start + PALETTE_PAGE_SIZE);
+  root.dataset.page = String(page);
+  root.innerHTML = `<div class="palette-window"><button class="btn btn-ghost" data-palette-page="prev" ${page===0?"disabled":""}>‹</button><span>${start+1}–${end} / ${total}</span><button class="btn btn-ghost" data-palette-page="next" ${page>=pageCount-1?"disabled":""}>›</button></div>` +
+    examQuestions.slice(start,end).map((q,offset)=>`<button data-index="${start+offset}" aria-label="Question ${start+offset+1}">${start+offset+1}</button>`).join("");
+  root.querySelectorAll("[data-palette-page]").forEach(btn=>btn.addEventListener("click",()=>{
+    const next = Math.max(0, Math.min(pageCount-1, page + (btn.dataset.palettePage === "next" ? 1 : -1)));
+    currentExamIndex = next * PALETTE_PAGE_SIZE;
+    renderExamQuestion();
+  }));
+  root.querySelectorAll("[data-index]").forEach(btn=>btn.addEventListener("click",()=>{
     currentExamIndex=Number(btn.dataset.index);renderExamQuestion();
   }));
   updatePalette();
 }
 function updatePalette() {
-  $("#question-palette").querySelectorAll("button").forEach((btn,i)=>{
+  const root = $("#question-palette");
+  const page = Math.floor(currentExamIndex / PALETTE_PAGE_SIZE);
+  const start = page * PALETTE_PAGE_SIZE;
+  const currentPage = Number(root.dataset.page);
+  if (currentPage !== page) { renderPalette(); return; }
+  root.querySelectorAll("button[data-index]").forEach(btn=>{
+    const i=Number(btn.dataset.index), q=examQuestions[i];
     btn.classList.toggle("current",i===currentExamIndex);
-    btn.classList.toggle("answered",examAnswers[examQuestions[i].id]!==undefined);
-    btn.classList.toggle("review",reviewFlags.has(examQuestions[i].id));
+    btn.classList.toggle("answered",examAnswers[q.id]!==undefined);
+    btn.classList.toggle("review",reviewFlags.has(q.id));
   });
 }
+
 function renderExamQuestion() {
   const q = examQuestions[currentExamIndex];
   if (!q) return;
@@ -385,6 +448,7 @@ function bindAdmin() {
     try { localStorage.setItem(LOCAL_QUESTIONS_KEY, JSON.stringify(local)); }
     catch (_) { showToast("Browser storage is full. Export the bank and remove some local data."); return; }
     questionBank.push(question);
+    buildTopicIndex();
     $("#admin-question-form").reset();
     updateAdminChapters();
     updateDashboard();
@@ -474,6 +538,7 @@ async function importQuestionBank(event) {
     const local = [...merged.values()];
     localStorage.setItem(LOCAL_QUESTIONS_KEY, JSON.stringify(local));
     questionBank = [...bundled, ...local];
+    buildTopicIndex();
     updateChapterOptions("exam");
     updateChapterOptions("practice");
     updateDashboard(); loadPractice(); renderAdminRecent();
